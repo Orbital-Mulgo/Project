@@ -46,8 +46,8 @@ export class Login extends Component {
                     className="col-md-6 m-auto"
                     style={{
                         position: "absolute",
-                        left: "25%",
-                        top: "7.5%",
+                        left: "24%",
+                        top: "2%",
                         width: "678px",
                         font: "16px Arial",
                     }}
@@ -61,9 +61,9 @@ export class Login extends Component {
                     >
                         <div style={{ textAlign: "center" }}>
                             <img
-                                src="../../../static/images/mulgologo.png"
-                                width="131"
-                                height="150"
+                                src="../../../static/images/mulgologo2.png"
+                                width="125"
+                                height="120"
                                 alt="Mulgo Logo"
                             />
                         </div>
