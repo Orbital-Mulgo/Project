@@ -19,14 +19,14 @@ export class Leads extends Component {
     render() {
         return (
             <Fragment>
-                <h2>Leads</h2>
+                <h2>Song list</h2>
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Message</th>
+                            <th>S/N</th>
+                            <th>Song Title</th>
+                            <th>Album</th>
+                            <th>Song Duration</th>
                             <th />
                         </tr>
                     </thead>
