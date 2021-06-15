@@ -17,5 +17,5 @@ This feature will...
 
 ## List of Tasks (Complete in order)
 
-1. [ ] [Task 1: Awesome Task Title](https://github.com/Orbital-Mulgo/Project/issues/1)
-2. [ ] [Task 2: Awesome Task Title](https://github.com/Orbital-Mulgo/Project/issues/2)
+1. [ ] [Task 1: Awesome Task Title](https://github.com/Orbital-Mulgo/Project/issues/4)
+2. [ ] [Task 2: Awesome Task Title](https://github.com/Orbital-Mulgo/Project/issues/4)
