@@ -17,4 +17,4 @@ This task will...
 
 <!-- The link below should link to its Main Issue. -->
 
-This task is part of [Feature: Awesome Feature Title](https://github.com/username/repository-name/issues/1).
+This task is part of [Feature: Awesome Feature Title](https://github.com/Orbital-Mulgo/Project/issues/1).
