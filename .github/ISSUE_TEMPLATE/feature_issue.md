@@ -11,7 +11,7 @@ Feature: Awesome Feature Title
 
 ## Feature Description
 
-This Feature will...
+This feature will...
 
 ## List of Tasks (Complete in order)
 
