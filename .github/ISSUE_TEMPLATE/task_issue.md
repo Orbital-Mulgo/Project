@@ -11,7 +11,7 @@ Task: Awesome Task Title
 
 ## Task Description
 
-This Task will...
+This task will...
 
 ## Main Issue
 
