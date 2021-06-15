@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 --------
 name: Bug report
 about: Create a report to help us improve.
 --------
+=======
+---
+name: Bug report
+about: Create a report to help us improve.
+---
+>>>>>>> a2a811335fca9afb083556deb300161269bc1d34
 
 <!-- Please search existing issues to avoid creating duplicates. -->
 
