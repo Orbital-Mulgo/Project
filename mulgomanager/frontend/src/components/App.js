@@ -9,6 +9,7 @@ import {
 
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import MicRecorder from 'mic-recorder-to-mp3';
 
 import Header from "./layout/Header";
 import Dashboard from "./songs/Dashboard";
@@ -16,10 +17,13 @@ import Alerts from "./layout/Alerts";
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 import PrivateRoute from "./common/PrivateRoute";
+import Library from './library/Library';
+import Forum from './forum/Forum';
 
 import { Provider } from "react-redux";
 import store from "../store";
 import { loadUser } from "../actions/auth";
+
 
 // Alert Options
 const alertOptions = {
@@ -56,6 +60,14 @@ class App extends Component {
                                         exact
                                         path="/login"
                                         component={Login}
+                                    />
+                                    <Route 
+                                        path='/library' 
+                                        component={Library} 
+                                    />
+                                    <Route 
+                                        path='/forum' 
+                                        component={Forum} 
                                     />
                                 </Switch>
                             </div>

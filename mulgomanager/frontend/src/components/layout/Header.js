@@ -83,14 +83,19 @@ export class Header extends Component {
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav md-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#" style={{ color: "white" }}>
+              <Link to="/" class="nav-link" style={{ color: "white" }}>
                 Home
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style={{ color: "white" }}>
+              <Link to='/library' class="nav-link" style={{ color: "white" }}>
                 Library
-              </a>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to='/forum' class="nav-link" style={{ color: "white" }}>
+                Forum
+              </Link>
             </li>
           </ul>
 
@@ -112,37 +117,6 @@ export class Header extends Component {
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
-
-      // <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      //   <div className="container">
-      //     <button
-      //       className="navbar-toggler"
-      //       type="button"
-      //       data-bs-toggle="collapse"
-      //       data-bs-target="#navbarTogglerDemo03"
-      //       aria-controls="navbarTogglerDemo03"
-      //       aria-expanded="false"
-      //       aria-label="Toggle navigation"
-      //     >
-      //       <span className="navbar-toggler-icon"></span>
-      //     </button>
-
-      //     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-      //       <a className="navbar-brand" href="#">
-      //         <img
-      //           src="../../../static/images/mulgotext.png"
-      //           alt="Mulgo text"
-      //           height="150px"
-      //           width="250px"
-      //           style={{
-      //             margin: "0 0 -80px 0",
-      //           }}
-      //         ></img>
-      //       </a>
-      //     </div>
-      //     {isAuthenticated ? authLinks : guestLinks}
-      //   </div>
-      // </nav>
     );
   }
 }
