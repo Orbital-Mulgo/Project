@@ -36,14 +36,14 @@ class Recorder extends Component {
     Mp3Recorder.stop()
       .getMp3()
       .then(([buffer, blob]) => {
-        // const file = new File(buffer, 'me-at-thevoice.mp3', {
-        //   type: blob.type,
-        //   lastModified: Date.now()
-        // });
-        // const player = new Audio(URL.createObjectURL(file));
-        // player.play();
+        const file = new File(buffer, 'me-at-thevoice.mp3', {
+          type: blob.type,
+          lastModified: Date.now()
+        });
+        const player = new Audio(URL.createObjectURL(file));
+        player.play();
 
-        const blobURL = URL.createObjectURL(blob)
+        //const blobURL = URL.createObjectURL(blob)
         this.setState({ 
           blobURL: blobURL,
           isRecording: false
