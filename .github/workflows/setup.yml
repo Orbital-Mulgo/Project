@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    working_directory: ./mulgomanager/
+  
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -38,6 +38,9 @@ jobs:
         pip install coverage
         coverage run manage.py test
         coverage report
+      working-directory: ./mulgomanager
     - name: Run Tests
       run: |
         python3 manage.py test
+      working-directory: ./mulgomanager
+
