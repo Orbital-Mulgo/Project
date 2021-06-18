@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    working_directory: ~/mulgomanager/
+    working_directory: ./mulgomanager/
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
