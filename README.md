@@ -7,4 +7,5 @@ Mulgo is a free music information application where users are able to access dif
 Further documentation of the project can be found [here](https://docs.google.com/document/d/1IzVXIJjOk7AqprLelPS05zlqPVoc-QdZ262IQ1OKJfY/edit).
 
 ## Workflow Testing
-![example workflow](https://github.com/Orbital-Mulgo/Project/actions/workflows/setup.yml/badge.svg)
+[![Backend Test](https://github.com/Orbital-Mulgo/Project/actions/workflows/setup.yml/badge.svg)](https://github.com/Orbital-Mulgo/Project/actions/workflows/setup.yml)
+[![Security Check](https://github.com/Orbital-Mulgo/Project/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Orbital-Mulgo/Project/actions/workflows/codeql-analysis.yml)
