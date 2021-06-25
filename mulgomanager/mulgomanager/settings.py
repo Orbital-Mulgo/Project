@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from decouple import config
+import environ
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,10 +45,15 @@ INSTALLED_APPS = [
     'frontend',
     'knox',
     'accounts',
+    'lyrics',
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
 }
 
 MIDDLEWARE = [
@@ -127,3 +135,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Initialise environment variables
+env = environ.Env()
+
+environ.Env.read_env()
+
+GENIUS_CLIENT_ID = env('GENIUS_CLIENT_ID')
+
+GENIUS_CLIENT_SECRET = env('GENIUS_CLIENT_SECRET')
+
+GENIUS_ACCESS_TOKEN = env('GENIUS_ACCESS_TOKEN')
+
+# GENIUS_REDIRECT_URL = env('GENIUS_REDIRECT_URL')
