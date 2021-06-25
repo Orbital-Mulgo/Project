@@ -90,23 +90,27 @@ class Recorder extends Component {
   render() {
     const { isRecording } = this.state;
     return (
+      <div style={{textAlign:"center"}}>
       <React.Fragment>
-      <h1>Audio Recorder</h1>
+      <h1 style={{padding:"17px"}}>Audio Recorder</h1>
         <button
           onClick={this.startRecording}
           className="mr-3 add-collec-btn"
           disabled={isRecording}
         >
-          Record
+          <img src="../static/images/recordbutton.png"/>
         </button>
+        <br/>
         <button
           onClick={this.stopRecording}
           className="mr-3 delete-btn"
           disabled={!isRecording}
+          style={{paddingLeft:"102px", paddingRight:"102px"}}
         >
           Stop
         </button>
       </React.Fragment>
+      </div>
     );
   }
 }

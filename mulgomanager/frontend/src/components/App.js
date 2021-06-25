@@ -9,7 +9,7 @@ import {
 
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
-import MicRecorder from 'mic-recorder-to-mp3';
+
 
 import Header from "./layout/Header";
 import Dashboard from "./songs/Dashboard";
@@ -18,7 +18,8 @@ import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 import PrivateRoute from "./common/PrivateRoute";
 import Library from './library/Library';
-import Forum from './forum/Forum';
+import ResultPage from "./ResultPage";
+
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -66,8 +67,8 @@ class App extends Component {
                                         component={Library} 
                                     />
                                     <Route 
-                                        path='/forum' 
-                                        component={Forum} 
+                                        path='/resultpage' 
+                                        component={ResultPage} 
                                     />
                                 </Switch>
                             </div>
