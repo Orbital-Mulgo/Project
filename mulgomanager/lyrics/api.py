@@ -13,7 +13,7 @@ headers = {
 genius = lyricsgenius.Genius()
 
 
-@api_view(('GET','POST'))
+@api_view(('GET', 'POST'))
 @renderer_classes((JSONRenderer, BrowsableAPIRenderer))
 def SearchAll(request):
     payload = request.data
@@ -28,11 +28,12 @@ def SearchAll(request):
     # lyrics = song.to_text().splitlines()
     return Response(song)
 
+
 # Search for specific songs
 @api_view(('GET', 'POST'))
 @renderer_classes((JSONRenderer, BrowsableAPIRenderer))
 def SearchSong(request):
-    payload=request.data
+    payload = request.data
     song = genius.search_song(payload["search_term"])
     values = song.to_json()
     return Response(values)
