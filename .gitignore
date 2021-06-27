@@ -131,6 +131,9 @@ ENV/
 env.bak/
 venv.bak/
 pythonenv*
+bin/
+lib/
+mulgomanager/mulgomanager/.env
 
 # Spyder project settings
 .spyderproject

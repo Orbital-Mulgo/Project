@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import SearchBar from "./SearchBar";
 
 export class Header extends Component {
   static propTypes = {
@@ -16,7 +17,7 @@ export class Header extends Component {
     const authLinks = (
       <ul className="navbar-nav ms-auto mt-2 mt-lg-0 ">
         <span className="navbar-text mr-3" style={{ color: "white" }}>
-          <strong>{user ? `${user.username}` : ""}</strong>
+          <strong>Welcome {user ? `${user.username}` : ""} !</strong>
         </span>
         <li className="nav-item">
           <button
@@ -93,27 +94,9 @@ export class Header extends Component {
               </Link>
             </li>
             <li class="nav-item">
-              <Link to='/forum' class="nav-link" style={{ color: "white" }}>
-                Forum
-              </Link>
             </li>
           </ul>
-
-          <div class="search-container">
-            <form>
-              <input type="text" placeholder="Search for ..." name="search" 
-                style={{
-                  height: "48px",
-                  width: "270px",
-                  fontSize: "14px"
-                }}
-              />
-              <button class="btn btn-dark" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
-
+              <SearchBar/>
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
