@@ -13,7 +13,7 @@ headers = {
 genius = lyricsgenius.Genius()
 
 
-@api_view(('GET', ))
+@api_view(('GET','POST'))
 @renderer_classes((JSONRenderer, BrowsableAPIRenderer))
 def SearchAll(request):
     payload = request.data
@@ -22,10 +22,19 @@ def SearchAll(request):
     # result = response.json()
     # title = request.data['field']
     # Using lyricsgenius to retrieve scrapped lyrics
-    song = genius.search_song(payload["search_term"])
-    values = song.to_dict()
+    song = genius.search_songs(payload["search_term"])
+    # values = song.to_dict()
     # Convert each line to a list element
     # lyrics = song.to_text().splitlines()
+    return Response(song)
+
+# Search for specific songs
+@api_view(('GET', 'POST'))
+@renderer_classes((JSONRenderer, BrowsableAPIRenderer))
+def SearchSong(request):
+    payload=request.data
+    song = genius.search_song(payload["search_term"])
+    values = song.to_json()
     return Response(values)
 
 
@@ -53,12 +62,12 @@ For subsequent functionality implementation
 #     return Response(lyrics, status=response.status_code)
 
 # # Search for songs based on id
-# @api_view(('GET', ))
+# @api_view(('GET','POST' ))
 # @renderer_classes((JSONRenderer, BrowsableAPIRenderer))
 # def SearchWithSongID(request):
 #     url = "https://api.genius.com/songs/378195"
 #     payload=request.data
-#     response = requests.request("GET", url, headers=headers, params=payload)
+#     response = request.request("GET", url, headers=headers, params=payload)
 #     result = response.json()
 #     # # Test whether can access the attributes of the response object
 #     # title = []
