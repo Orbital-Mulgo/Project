@@ -30,7 +30,8 @@ export class ResultPage extends Component {
         .post("search/song/", body, config)
         .then((res) => {
           console.log(res.data);
-          var data = JSON.parse(res.data)
+          var data = JSON.parse(res.data);
+
           this.setState({
             id: id,
             title: title,
@@ -71,7 +72,9 @@ export class ResultPage extends Component {
         <div style={{ float: "right", width: "80%" }}>
           <h2>Song Lyrics</h2>
           <br />
-          {this.state.lyrics}
+          {this.state.lyrics.split(/\n/).map((line) => (
+            <div>{line}</div>
+          ))}
         </div>
       </div>
     );
