@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addSong } from "../../actions/songs";
 import MicRecorder from 'mic-recorder-to-mp3';
+import SearchBar from "../layout/SearchBar";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 

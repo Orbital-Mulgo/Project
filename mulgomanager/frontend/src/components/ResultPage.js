@@ -12,7 +12,7 @@ export class ResultPage extends Component {
 
   componentDidMount() {
     if (this.props.location.state) {
-      const { id, title, artist, image } = this.props.location.state;
+      const { title, artist, image } = this.props.location.state;
 
       const config = {
         headers: {
@@ -33,7 +33,7 @@ export class ResultPage extends Component {
           var data = JSON.parse(res.data);
 
           this.setState({
-            id: id,
+            id: data.id,
             title: title,
             artist: artist,
             image: image,

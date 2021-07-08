@@ -24,7 +24,7 @@ export class Header extends Component {
             onClick={this.props.logout}
             className="nav-link btn btn-dark text-light"
             style={{
-              marginLeft: "30px",
+              marginLeft: "70px",
               width: "100px",
               innerHeight: "120px",
               fontSize: "13px",
@@ -96,7 +96,6 @@ export class Header extends Component {
             <li class="nav-item">
             </li>
           </ul>
-              <SearchBar/>
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
