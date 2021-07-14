@@ -4,7 +4,8 @@ import axios from "axios";
 // In order to work with redux from any component, you need to use "connect"
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link ,withRouter} from "react-router-dom";
+import { addSong } from "../actions/songs";
 
 class SongDetail extends Component {
   constructor(props) {
@@ -12,38 +13,48 @@ class SongDetail extends Component {
   }
   state = {
     info: this.props.song,
+    title: this.props.song.result.title,
+    artist: this.props.song.result.primary_artist.name,
+    image: this.props.song.result.header_image_url,
     libraryState: "Add to library",
- }
+  };
 
- handleClick = () => {
-  this.setState({
-    info: this.state.info,
-    libraryState: "Added to library",
-  });
-};
+  handleClick = () => {
+    const { info, title, artist, image, libraryState } = this.state;
+    let duration ='00:03:25';
+    const song = { title, artist, image, duration };
+    this.props.addSong(song);
+    this.setState({
+      info: this.state.info,
+      title: this.state.title,
+      artist: this.state.artist,
+      image: this.state.image,
+      libraryState: "Added to library",
+    });
+  };
 
   render() {
     return (
       <tr>
         <td>{this.props.index + 1}</td>
-        <td>{this.state.info.result.primary_artist.name}</td>
+        <td>{this.state.artist}</td>
         <Link
           to={{
             pathname: "/resultpage",
             state: {
-              title: this.state.info.result.title,
-              artist: this.state.info.result.primary_artist.name,
-              image: this.state.info.result.header_image_url,
+              title: this.state.title,
+              artist: this.state.artist,
+              image: this.state.image,
             },
           }}
           style={{ color: "black" }}
           replace
         >
-          <td>{this.state.info.result.title}</td>
+          <td>{this.state.title}</td>
         </Link>
         <td>
           <img
-            src={this.state.info.result.header_image_url}
+            src={this.state.image}
             alt="album image"
             width="100"
             height="100"
@@ -72,7 +83,6 @@ export class SearchPage extends Component {
     if (this.props.location.state) {
       console.log(this.props.location.state);
       const { query, value } = this.props.location.state;
-
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -119,9 +129,7 @@ export class SearchPage extends Component {
   render() {
     return (
       <Fragment>
-        <h2 style={{ textAlign: "center", padding: "20px" }}>
-          Search Results
-        </h2>
+        <h2 style={{ textAlign: "center", padding: "20px" }}>Search Results</h2>
         <table className="table table-striped">
           <col width="300px" />
           <col width="450px" />
@@ -139,7 +147,7 @@ export class SearchPage extends Component {
           </thead>
           <tbody>
             {this.state.info.map((song, index) => (
-                <SongDetail song={song} index={index} />
+              <SongDetail song={song} index={index} addSong = {this.props.addSong}/>
             ))}
           </tbody>
         </table>
@@ -148,4 +156,5 @@ export class SearchPage extends Component {
   }
 }
 
-export default SearchPage;
+export default connect(null, { addSong })(SearchPage);
+//export default withRouter(SearchPage)
