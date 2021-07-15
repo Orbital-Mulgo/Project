@@ -27,7 +27,7 @@ SECRET_KEY = 'i05h1nf1$my=d2k(w-gwaqb=^2s4a=#l2rt65&i&24dmq-e1p2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mulgo.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'knox',
     'accounts',
     'lyrics',
+    'database',
 ]
 
 REST_FRAMEWORK = {
@@ -135,7 +136,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
 
 
 # Initialise environment variables
