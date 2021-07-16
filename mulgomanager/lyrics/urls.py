@@ -1,9 +1,5 @@
 from django.urls import path
-from .api import (
-    SearchAll, 
-    SearchSong, 
-    SearchArtist, 
-    SearchAlbum)
+from .api import (SearchAll, SearchSong, SearchArtist, SearchAlbum)
 
 
 urlpatterns = [

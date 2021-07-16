@@ -2,19 +2,17 @@
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 import xlsxwriter
-import requests
 
 
 PATH = "/Users/kian/Downloads/chromedriver"
 url = "https://www.songfacts.com/browse/artists/page"
-timeout = 60 # Number of seconds before browser closed. Adjusted accordingly based on how long to complete CAPTCHA 
+timeout = 60  # Number of seconds before browser closed. Adjusted accordingly based on how long to complete CAPTCHA
 
 chrome_options = webdriver.ChromeOptions()
 # Remove the automation header bar appearing at the browser window
@@ -30,7 +28,7 @@ try:
     parent = driver.find_element_by_xpath("//div[@class='pagin-blue space-bot']")
     element = parent.find_elements_by_css_selector('a')
     maximum_page = int(element[1].text)
-    
+
     # Loop from first page to last (maximum) page
     for i in range(maximum_page):
         element_present = EC.presence_of_element_located((By.CLASS_NAME, "browse-list-blue"))
@@ -43,7 +41,7 @@ try:
         if i != maximum_page - 1:
             next_page = driver.find_element_by_link_text("Next ›")
             next_page.click()
-        
+
     with xlsxwriter.Workbook('AllArtist.xlsx') as workbook:
         worksheet = workbook.add_worksheet()
         for row_num, data in enumerate(result):

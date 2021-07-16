@@ -11,24 +11,27 @@ class GenreView(APIView):
         serializer = GenreSerializer(genres, many=True)
         return Response({"genres": serializer.data})
 
+
 class ArtistView(APIView):
     def get(self, request):
         artists = Artist.objects.all()
         serializer = ArtistSerializer(artists, many=True)
         return Response({"artists": serializer.data})
 
+
 class SongView(APIView):
     def get(self, request):
         songs = Song.objects.all()
-        serializer = ArtistSerializer(songs, many=True)
+        serializer = SongSerializer(songs, many=True)
         return Response({"songs": serializer.data})
+
 
 # # Genre Viewset
 # class GenreViewset(viewsets.ModelViewSet):
 #     permission_classes = [
 #         permissions.IsAuthenticated
 #     ]
-    
+
 #     queryset = Genre.objects.all()
 #     serializer_class = GenreSerializer
 
@@ -43,7 +46,7 @@ class SongView(APIView):
 #     permission_classes = [
 #         permissions.IsAuthenticated
 #     ]
-    
+
 #     queryset = Artist.objects.all()
 #     serializer_class = ArtistSerializer
 
@@ -58,7 +61,7 @@ class SongView(APIView):
 #     permission_classes = [
 #         permissions.IsAuthenticated
 #     ]
-    
+
 #     queryset = Song.objects.all()
 #     serializer_class = SongSerializer
 

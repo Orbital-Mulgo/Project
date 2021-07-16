@@ -5,21 +5,23 @@ from dotenv import load_dotenv
 import lyricsgenius as lg
 from songs.models import Song
 import time
-from datetime import datetime, timedelta
+from datetime import timedelta
 from tqdm import tqdm
+from django.db import DataError
 
 
 def run():
     start_time = time.time()
-    print("Stage 1: Lyrics Update Starts at %s seconds" % (str(timedelta(seconds = time.time() - start_time)).split(".")[0]))
+    print("Stage 1: Lyrics Update Starts at %s seconds" %
+          (str(timedelta(seconds=time.time() - start_time)).split(".")[0]))
     load_dotenv()
     token = os.getenv('GENIUS_CLIENT_ID')
     genius = lg.Genius(token, timeout=60, skip_non_songs=True)
-    
+
     songs = Song.objects.all()
-    
+
     total = len(songs)
-    processed, updated, missing = 0, 0, 0
+    processed, updated, missing, error = 0, 0, 0, 0
     # Search the song by song name in Genius, and add the lyrics into the database
     with tqdm(total=total) as pbar:
         for song in songs:
@@ -37,17 +39,21 @@ def run():
                             song.song_image_thumbnail_url = track_dict['song_art_image_thumbnail_url']
                             song.save()
                             updated += 1
-                        except:
+                        except DataError as e:
+                            print(e)
+                            error += 1
                             pass
                     else:
                         missing += 1
-            
             pbar.update(1)
             processed += 1
             if processed % 50000 == 0:
-                print("%.2f%% of the songs has been processed, %d songs more to go" % ((processed/total)*100, total - processed))
-            
-    print("Stage 1: Lyrics Update Completed at %s seconds" % (str(timedelta(seconds = time.time() - start_time)).split(".")[0]))
-    print("--- %.2f%% (%d) of the songs lyrics cannot be found ---" % ((missing/total)*100, missing))
-    print("--- Database updated with %d songs in %s seconds ---" % (updated, str(timedelta(seconds = time.time() - start_time)).split(".")[0]))
-    
+                print("%.2f%% of the songs has been processed, %d songs more to go" %
+                      ((processed/total)*100, total - processed))
+
+    print("Stage 1: Lyrics Update Completed at %s seconds" %
+          (str(timedelta(seconds=time.time() - start_time)).split(".")[0]))
+    print("--- %.2f%% (%d) of the songs lyrics cannot be found ---" %
+          ((missing/total)*100, missing))
+    print("--- Database updated with %d songs in %s seconds ---" %
+          (updated, str(timedelta(seconds=time.time() - start_time)).split(".")[0]))

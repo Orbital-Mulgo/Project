@@ -15,28 +15,29 @@ class AlphabetFilter(admin.SimpleListFilter):
         if self.value():
             return queryset.filter(name__startswith=self.value())
 
+
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     list_display = ("name",)
     list_filter = (AlphabetFilter,)
-    search_fields = ['name',]
+    search_fields = ['name', ]
+
 
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
     list_display = ("id", "name", 'full_genres')
     list_filter = (AlphabetFilter,)
-    search_fields = ['id', 'name',]
-    
+    search_fields = ['id', 'name', ]
+
     def full_genres(self, obj):
         return "\n".join([genre.name for genre in obj.genres.all()])
-    
+
 
 @admin.register(Song)
 class SongAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "popularity", 'full_artists')
     list_filter = (AlphabetFilter,)
-    search_fields = ['id', 'name',]
-    
+    search_fields = ['id', 'name', ]
+
     def full_artists(self, obj):
         return "\n".join([artist.name for artist in obj.artists.all()])
-    

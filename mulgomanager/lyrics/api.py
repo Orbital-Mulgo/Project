@@ -58,6 +58,7 @@ def SearchAlbum(request):
     values = song.to_json()
     return Response(values)
 
+
 # REFERENCES
 """
 Codes below are for reference
