@@ -1,26 +1,88 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState } from "react";
 import axios from "axios";
 
 // In order to work with redux from any component, you need to use "connect"
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link ,withRouter} from "react-router-dom";
+import { addSong } from "../actions/songs";
+
+class SongDetail extends Component {
+  constructor(props) {
+    super(props);
+  }
+  state = {
+    info: this.props.song,
+    title: this.props.song.result.title,
+    artist: this.props.song.result.primary_artist.name,
+    image: this.props.song.result.header_image_url,
+    libraryState: "Add to library",
+  };
+
+  handleClick = () => {
+    const { info, title, artist, image, libraryState } = this.state;
+    let duration ='00:03:25';
+    const song = { title, artist, image, duration };
+    this.props.addSong(song);
+    this.setState({
+      info: this.state.info,
+      title: this.state.title,
+      artist: this.state.artist,
+      image: this.state.image,
+      libraryState: "Added to library",
+    });
+  };
+
+  render() {
+    return (
+      <tr>
+        <td>{this.props.index + 1}</td>
+        <td>{this.state.artist}</td>
+        <Link
+          to={{
+            pathname: "/resultpage",
+            state: {
+              title: this.state.title,
+              artist: this.state.artist,
+              image: this.state.image,
+            },
+          }}
+          style={{ color: "black" }}
+          replace
+        >
+          <td>{this.state.title}</td>
+        </Link>
+        <td>
+          <img
+            src={this.state.image}
+            alt="album image"
+            width="100"
+            height="100"
+          />
+        </td>
+        <td>
+          <button
+            type="submit"
+            className="btn btn-danger btn-sm"
+            onClick={this.handleClick}
+          >
+            {this.state.libraryState}
+          </button>
+        </td>
+      </tr>
+    );
+  }
+}
 
 export class SearchPage extends Component {
   state = {
-    // id: "",
-    // title: "",
-    // artist: "",
-    // image: "",
-    // lyrics: "",
     info: [],
   };
 
   componentDidMount() {
     if (this.props.location.state) {
       console.log(this.props.location.state);
-      const { query } = this.props.location.state;
-
+      const { query, value } = this.props.location.state;
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -33,18 +95,34 @@ export class SearchPage extends Component {
       const body = {
         search_term: query,
       };
-      axios
-        .post("search/", body, config)
-        .then((res) => {
-          console.log(res.data);
-          this.setState({
-            info: res.data.hits,
+
+      if (value == "artist") {
+        axios
+          .post("search/", body, config) //Change accordingly to the api
+          .then((res) => {
+            console.log(res.data);
+            this.setState({
+              info: res.data.hits,
+            });
+            console.log(this.state.info);
+          })
+          .catch((err) => {
+            console.log(err.message);
           });
-          console.log(this.state.info);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
+      } else if (value == "song_title") {
+        axios
+          .post("search/", body, config) //Change accordingly to the api
+          .then((res) => {
+            console.log(res.data);
+            this.setState({
+              info: res.data.hits,
+            });
+            console.log(this.state.info);
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      }
     }
   }
 
@@ -67,69 +145,9 @@ export class SearchPage extends Component {
               <th />
             </tr>
           </thead>
-
-          {/* <tbody>
-            <tr>
-              <td>1</td>
-              <td>
-                 <Link
-                  to={{
-                    pathname: "/resultpage",
-                    state: {
-                      id: this.state.id,
-                      title: this.state.title,
-                      artist: this.state.artist,
-                      image: this.state.image,
-                      lyrics: this.state.lyrics,
-                    },
-                  }}
-                  style={{ color: "black" }}
-                  replace
-                >
-                  {this.state.title}
-                </Link> 
-              </td>
-              <td>{this.state.artist}</td>
-              <td>
-                <img src={this.state.image} width="100" height="100" />
-              </td>
-            </tr>
-          </tbody> */}
           <tbody>
             {this.state.info.map((song, index) => (
-              <tr>
-                <td>{index + 1}</td>
-
-                <td>{song.result.primary_artist.name}</td>
-                <Link
-                  to={{
-                    pathname: "/resultpage",
-                    state: {
-                      id: song.result.id,
-                      title: song.result.title,
-                      artist: song.result.primary_artist.name,
-                      image: song.result.header_image_url,
-                    },
-                  }}
-                  style={{ color: "black" }}
-                  replace
-                >
-                  <td>{song.result.title}</td>
-                </Link>
-                <td>
-                  <img
-                    src={song.result.header_image_url}
-                    alt="album image"
-                    width="100"
-                    height="100"
-                  />
-                </td>
-                <td>
-                  <button className="btn btn-danger btn-sm">
-                    Add to Library
-                  </button>
-                </td>
-              </tr>
+              <SongDetail song={song} index={index} addSong = {this.props.addSong}/>
             ))}
           </tbody>
         </table>
@@ -138,8 +156,5 @@ export class SearchPage extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//     songs: state.songs.songs, // state.(songReducer).(object)
-// });
-
-export default SearchPage;
+export default connect(null, { addSong })(SearchPage);
+//export default withRouter(SearchPage)

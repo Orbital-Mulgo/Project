@@ -7,11 +7,9 @@ import PropTypes from "prop-types";
 import { getSongs, deleteSong } from "../../actions/songs";
 
 export class Library extends Component {
-  static propTypes = {
-    songs: PropTypes.array.isRequired,
-    getSongs: PropTypes.func.isRequired,
-    deleteSong: PropTypes.func.isRequired,
-  };
+  constructor(props) {
+    super(props);
+  }
 
   componentDidMount() {
     this.props.getSongs();
@@ -20,59 +18,57 @@ export class Library extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Song list</h2>
+        <h2 style={{ textAlign: "center", padding: "20px" }}>Library</h2>
         <table className="table table-striped">
           <thead>
             <tr>
               <th>S/N</th>
               <th>Song Title</th>
               <th>Artist</th>
-              <th>Album Name</th>
+              <th>Image</th>
               <th>More information</th>
               <th />
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Run</td>
-              <td>Onerepublic</td>
-              <td>Human</td>
-              <td>
-              <Link to='/resultpage' class="nav-link">
-              <u>Click Here</u>
-              </Link>
-              </td>
-              <td>
-                <button className="btn btn-danger btn-sm"> Delete</button>
-              </td>
-            </tr>
+            {this.props.songs.map((song, index) => (
+              <tr key={song.id}>
+                <td>{index + 1}</td>
+                <td>{song.title}</td>
+                <td>{song.artist}</td>
+                <td>
+                  <img
+                    src={song.image}
+                    alt="album image"
+                    width="100"
+                    height="100"
+                  />
+                </td>
+                <Link
+                  to={{
+                    pathname: "/resultpage",
+                    state: {
+                      title: song.title,
+                      artist: song.artist,
+                      image: song.image,
+                    },
+                  }}
+                  style={{ color: "black" }}
+                >
+                  <td>Click Here</td>
+                </Link>
+                <td>
+                  <button
+                    onClick={this.props.deleteSong.bind(this, song.id)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    {" "}
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
-          {/* <tbody>
-                        {this.props.songs.map((song) => (
-                            <tr key={song.id}>
-                                <td>{song.id}</td>
-                                <td>{song.title}</td>
-                                <td>{song.artist}</td>
-                                <td>{song.image}</td>
-                                <td>{song.audio_file}</td>
-                                <td>{song.audio_link}</td>
-                                <td>{song.duration}</td>
-                                <td>
-                                    <button
-                                        onClick={this.props.deleteSong.bind(
-                                            this,
-                                            song.id
-                                        )}
-                                        className="btn btn-danger btn-sm"
-                                    >
-                                        {" "}
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody> */}
         </table>
       </Fragment>
     );
