@@ -26,10 +26,6 @@ export class Songs extends Component {
                             <th>S/N</th>
                             <th>Song Title</th>
                             <th>Artist</th>
-                            <th>Image</th>
-                            <th>Song File</th>
-                            <th>Song Link</th>
-                            <th>Song Duration</th>
                             <th />
                         </tr>
                     </thead>
@@ -39,10 +35,6 @@ export class Songs extends Component {
                                 <td>{song.id}</td>
                                 <td>{song.title}</td>
                                 <td>{song.artist}</td>
-                                <td>{song.image}</td>
-                                <td>{song.audio_file}</td>
-                                <td>{song.audio_link}</td>
-                                <td>{song.duration}</td>
                                 <td>
                                     <button
                                         onClick={this.props.deleteSong.bind(

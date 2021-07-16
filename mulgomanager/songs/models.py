@@ -89,7 +89,7 @@ class Song(models.Model):
     mode = models.IntegerField()
     time_signature = models.IntegerField()
     slug = AutoSlugField(populate_from='name', slugify_function=my_slugify_function)
-
+    
     header_image_url = models.URLField(blank=True)
     header_image_thumbnail_url = models.URLField(blank=True)
     song_image_url = models.URLField(blank=True)
