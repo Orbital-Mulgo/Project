@@ -75,7 +75,7 @@ class Song(models.Model):
     duration_ms = models.FloatField()
     explicit = models.BooleanField()
     artists = models.ManyToManyField(Artist, blank=True)
-    release_date = models.DateField()
+    release_date = models.DateField(blank=True, null=True)
     acousticness = models.FloatField()
     danceability = models.FloatField()
     energy = models.FloatField()
