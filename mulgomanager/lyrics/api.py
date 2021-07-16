@@ -39,6 +39,26 @@ def SearchSong(request):
     return Response(values)
 
 
+# Search for specific artist
+@api_view(('GET', 'POST'))
+@renderer_classes((JSONRenderer, BrowsableAPIRenderer))
+def SearchArtist(request):
+    payload = request.data
+    song = genius.search_artist(payload["search_term"])
+    values = song.to_json()
+    return Response(values)
+
+
+# Search for specific albums
+@api_view(('GET', 'POST'))
+@renderer_classes((JSONRenderer, BrowsableAPIRenderer))
+def SearchAlbum(request):
+    payload = request.data
+    song = genius.search_album(payload["search_term"])
+    values = song.to_json()
+    return Response(values)
+
+
 # REFERENCES
 """
 Codes below are for reference
