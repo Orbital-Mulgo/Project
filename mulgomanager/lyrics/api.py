@@ -44,7 +44,7 @@ def SearchSong(request):
 @renderer_classes((JSONRenderer, BrowsableAPIRenderer))
 def SearchArtist(request):
     payload = request.data
-    song = genius.search_artist(payload["search_term"])
+    song = genius.search_artist(payload["search_term"], max_songs=5)
     values = song.to_json()
     return Response(values)
 

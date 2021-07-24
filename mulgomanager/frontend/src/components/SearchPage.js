@@ -4,7 +4,7 @@ import axios from "axios";
 // In order to work with redux from any component, you need to use "connect"
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link ,withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { addSong } from "../actions/songs";
 
 class SongDetail extends Component {
@@ -20,10 +20,15 @@ class SongDetail extends Component {
   };
 
   handleClick = () => {
+    console.log(this.props)
     const { info, title, artist, image, libraryState } = this.state;
-    let duration ='00:03:25';
-    const song = { title, artist, image, duration };
-    this.props.addSong(song);
+    fetch("http://127.0.0.1:8000/songs/?name=" + title)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.props.addSong(data);
+        });
+    
     this.setState({
       info: this.state.info,
       title: this.state.title,
@@ -77,6 +82,7 @@ class SongDetail extends Component {
 export class SearchPage extends Component {
   state = {
     info: [],
+    total: [],
   };
 
   componentDidMount() {
@@ -96,13 +102,14 @@ export class SearchPage extends Component {
         search_term: query,
       };
 
-      if (value == "artist") {
+      if (value == "all") {
         axios
-          .post("search/", body, config) //Change accordingly to the api
+          .post("search/", body, config)
           .then((res) => {
             console.log(res.data);
             this.setState({
               info: res.data.hits,
+              total: this.state.total,
             });
             console.log(this.state.info);
           })
@@ -111,11 +118,40 @@ export class SearchPage extends Component {
           });
       } else if (value == "song_title") {
         axios
-          .post("search/", body, config) //Change accordingly to the api
+          .post("search/", body, config)
           .then((res) => {
             console.log(res.data);
             this.setState({
               info: res.data.hits,
+              total: this.state.total,
+            });
+            console.log(this.state.info);
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      } else if (value == "album") {
+        axios
+          .post("search/", body, config)
+          .then((res) => {
+            console.log(res.data);
+            this.setState({
+              info: res.data.hits,
+              total: this.state.total,
+            });
+            console.log(this.state.info);
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      } else if (value == "artist") {
+        axios
+          .post("search/", body, config)
+          .then((res) => {
+            console.log(res.data);
+            this.setState({
+              info: res.data.hits,
+              total: this.state.total,
             });
             console.log(this.state.info);
           })
@@ -147,7 +183,12 @@ export class SearchPage extends Component {
           </thead>
           <tbody>
             {this.state.info.map((song, index) => (
-              <SongDetail song={song} index={index} addSong = {this.props.addSong}/>
+              <SongDetail
+                song={song}
+                index={index}
+                total={this.state.total}
+                addSong={this.props.addSong}
+              />
             ))}
           </tbody>
         </table>
