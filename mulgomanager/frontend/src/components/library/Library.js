@@ -13,6 +13,7 @@ export class Library extends Component {
 
   componentDidMount() {
     this.props.getSongs();
+    console.log(this.props);
   }
 
   FetchArtist(song) {

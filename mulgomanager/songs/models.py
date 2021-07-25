@@ -1,5 +1,6 @@
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
+from django.contrib.auth.models import User
 
 
 def my_slugify_function(content):
@@ -97,6 +98,8 @@ class SongInfo(models.Model):
     lyrics = models.TextField(blank=True,null=True, default="No lyrics at the moment")
     artists = models.ManyToManyField(Artist, blank=True)
     objects = SongManager()
+    added_by = models.ForeignKey(
+        User, related_name="songinfos", on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name

@@ -103,4 +103,4 @@ class SongInfoViewset(viewsets.ModelViewSet):
         return self.request.user.songinfos.all()
 
     def perform_create(self, serializer):
-        serializer.save()
+        serializer.save(added_by=self.request.user)
