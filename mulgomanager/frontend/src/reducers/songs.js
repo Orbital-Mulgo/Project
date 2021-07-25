@@ -7,6 +7,7 @@ import {
 
 const initialState = {
     songs: [],
+    songinfos: [],
 };
 
 export default function (state = initialState, action) {

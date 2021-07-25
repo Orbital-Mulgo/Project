@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genre, Artist, Song
+from .models import Genre, Artist, Song, SongInfo
 import string
 
 
@@ -35,6 +35,15 @@ class ArtistAdmin(admin.ModelAdmin):
 
 @admin.register(Song)
 class SongAdmin(admin.ModelAdmin):
+    list_display = ("id", "name", "popularity", 'full_artists')
+    list_filter = (AlphabetFilter,)
+    search_fields = ['id', 'name', ]
+
+    def full_artists(self, obj):
+        return "\n".join([artist.name for artist in obj.artists.all()])
+
+@admin.register(SongInfo)
+class SongInfoAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "popularity", 'full_artists')
     list_filter = (AlphabetFilter,)
     search_fields = ['id', 'name', ]

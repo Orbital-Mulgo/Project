@@ -1,5 +1,6 @@
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
+from django.contrib.auth.models import User
 
 
 def my_slugify_function(content):
@@ -31,7 +32,7 @@ class Genre(models.Model):
     valence = models.FloatField()
     key = models.IntegerField()
     mode = models.IntegerField()
-    slug = AutoSlugField(populate_from='name', slugify_function=my_slugify_function)
+    slug = AutoSlugField(populate_from='name', slugify_function=my_slugify_function, null=True)
 
     def __str__(self):
         return self.name
@@ -49,7 +50,7 @@ class Artist(models.Model):
     popularity = models.IntegerField(null=True)
     followers = models.FloatField(default=0.0, null=True)
     genres = models.ManyToManyField(Genre)
-    slug = AutoSlugField(populate_from='name', slugify_function=my_slugify_function)
+    slug = AutoSlugField(populate_from='name', slugify_function=my_slugify_function, null=True)
     objects = ArtistManager()
 
     def __str__(self):
@@ -68,34 +69,70 @@ class SongManager(models.Manager):
         return song
 
 
+class SongInfo(models.Model):
+    id = models.CharField(max_length=100, primary_key=True)
+    name = models.CharField(max_length=200, null=True)
+    popularity = models.IntegerField()
+    duration_ms = models.FloatField(null=True)
+    explicit = models.BooleanField(null=True)
+    release_date = models.DateField(blank=True, null=True)
+    acousticness = models.FloatField(null=True)
+    danceability = models.FloatField(null=True)
+    energy = models.FloatField(null=True)
+    instrumentalness = models.FloatField(null=True)
+    liveness = models.FloatField(null=True)
+    loudness = models.FloatField(null=True)
+    speechiness = models.FloatField(null=True)
+    tempo = models.FloatField(null=True)
+    valence = models.FloatField(null=True)
+    key = models.IntegerField(null=True)
+    mode = models.IntegerField(null=True)
+    time_signature = models.IntegerField(null=True)
+    slug = AutoSlugField(populate_from='name', slugify_function=my_slugify_function, null=True)
+
+    header_image_url = models.CharField(max_length=100, null=True, blank=True)
+    header_image_thumbnail_url = models.CharField(max_length=100, null=True, blank=True)
+    song_image_url = models.CharField(max_length=100, null=True, blank=True)
+    song_image_thumbnail_url = models.CharField(max_length=100, null=True, blank=True)
+    genius_id = models.CharField(max_length=100, blank=True, null=True)
+    lyrics = models.TextField(blank=True,null=True, default="No lyrics at the moment")
+    artists = models.ManyToManyField(Artist, blank=True)
+    objects = SongManager()
+    added_by = models.ForeignKey(
+        User, related_name="songinfos", on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Song(models.Model):
     id = models.CharField(max_length=100, primary_key=True)
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, null=True)
     popularity = models.IntegerField()
-    duration_ms = models.FloatField()
-    explicit = models.BooleanField()
-    artists = models.ManyToManyField(Artist, blank=True)
+    duration_ms = models.FloatField(null=True)
+    explicit = models.BooleanField(null=True)
     release_date = models.DateField(blank=True, null=True)
-    acousticness = models.FloatField()
-    danceability = models.FloatField()
-    energy = models.FloatField()
-    instrumentalness = models.FloatField()
-    liveness = models.FloatField()
-    loudness = models.FloatField()
-    speechiness = models.FloatField()
-    tempo = models.FloatField()
-    valence = models.FloatField()
-    key = models.IntegerField()
-    mode = models.IntegerField()
-    time_signature = models.IntegerField()
-    slug = AutoSlugField(populate_from='name', slugify_function=my_slugify_function)
+    acousticness = models.FloatField(null=True)
+    danceability = models.FloatField(null=True)
+    energy = models.FloatField(null=True)
+    instrumentalness = models.FloatField(null=True)
+    liveness = models.FloatField(null=True)
+    loudness = models.FloatField(null=True)
+    speechiness = models.FloatField(null=True)
+    tempo = models.FloatField(null=True)
+    valence = models.FloatField(null=True)
+    key = models.IntegerField(null=True)
+    mode = models.IntegerField(null=True)
+    time_signature = models.IntegerField(null=True)
+    slug = AutoSlugField(populate_from='name', slugify_function=my_slugify_function, null=True)
 
-    header_image_url = models.URLField(blank=True)
-    header_image_thumbnail_url = models.URLField(blank=True)
-    song_image_url = models.URLField(blank=True)
-    song_image_thumbnail_url = models.URLField(blank=True)
-    genius_id = models.CharField(max_length=100, blank=True)
-    lyrics = models.TextField(blank=True, default="No lyrics at the moment")
+    header_image_url = models.CharField(max_length=100, null=True, blank=True)
+    header_image_thumbnail_url = models.CharField(max_length=100, null=True, blank=True)
+    song_image_url = models.CharField(max_length=100, null=True, blank=True)
+    song_image_thumbnail_url = models.CharField(max_length=100, null=True, blank=True)
+    genius_id = models.CharField(max_length=100, blank=True, null=True)
+    lyrics = models.TextField(blank=True,null=True, default="No lyrics at the moment")
+    artists = models.ManyToManyField(Artist, blank=True)
     objects = SongManager()
 
     def __str__(self):

@@ -13,6 +13,15 @@ export class Library extends Component {
 
   componentDidMount() {
     this.props.getSongs();
+    console.log(this.props);
+  }
+
+  FetchArtist(song) {
+    fetch("http://127.0.0.1:8000/artists/?id=" + song.artists[0])
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+    });
   }
 
   render() {
@@ -31,10 +40,12 @@ export class Library extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.songs.map((song, index) => (
+            {this.props.songs.map((song, index) => 
+            //FetchArtist(song)
+            (
               <tr key={song.id}>
                 <td>{index + 1}</td>
-                <td>{song.title}</td>
+                <td>{song.name}</td>
                 <td>{song.artist}</td>
                 <td>
                   <img

@@ -1,4 +1,4 @@
-# from rest_framework import routers
+from rest_framework import routers
 # from .api import GenreViewset, ArtistViewset, SongViewset
 
 # router = routers.DefaultRouter()
@@ -10,11 +10,14 @@
 
 
 from django.urls import path
-from .api import GenreView, ArtistView, SongView
+from .api import GenreView, ArtistView, SongView, SongInfoViewset
 
 app_name = "songs"
 
-urlpatterns = [
+router = routers.DefaultRouter()
+router.register('api/songs', SongInfoViewset, 'songinfos')
+
+urlpatterns = router.urls + [
     path('genres/', GenreView.as_view()),
     path('artists/', ArtistView.as_view()),
     path('songs/', SongView.as_view()),

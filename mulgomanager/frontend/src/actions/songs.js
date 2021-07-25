@@ -49,11 +49,10 @@ export const addSong = (song) => (dispatch, getState) => {
                 type: ADD_SONG,
                 payload: res.data,
             });
-            console.log(res.data);
         })
         .catch((err) => {
             dispatch(returnErrors(err.response.data, err.response.status));
-            console.log(err);
+            console.log(err.response.data);
         }
         );
 };
