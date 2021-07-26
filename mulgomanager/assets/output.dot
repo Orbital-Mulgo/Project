@@ -1,6 +1,6 @@
 digraph model_graph {
   // Dotfile by Django-Extensions graph_models
-  // Created: 2021-06-28 08:05
+  // Created: 2021-07-26 16:28
   // Cli Options: -a
 
   fontname = "Roboto"
@@ -457,18 +457,198 @@ digraph model_graph {
 
 
 
-  songs_models_Song [label=<
+  songs_models_Genre [label=<
     <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
     <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
     <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
-    Song
+    Genre
+    </B></FONT></TD></TR>
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto"><B>name</B></FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto"><B>CharField</B></FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">acousticness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">danceability</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">duration_ms</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">energy</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">instrumentalness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">key</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">liveness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">loudness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">mode</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">popularity</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">slug</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">AutoSlugField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">speechiness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">tempo</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">valence</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+    </TABLE>
+    >]
+
+  songs_models_Artist [label=<
+    <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
+    <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
+    <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
+    Artist
     </B></FONT></TD></TR>
   
   
     <TR><TD ALIGN="LEFT" BORDER="0">
     <FONT FACE="Roboto"><B>id</B></FONT>
     </TD><TD ALIGN="LEFT">
-    <FONT FACE="Roboto"><B>BigAutoField</B></FONT>
+    <FONT FACE="Roboto"><B>CharField</B></FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">followers</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">name</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">popularity</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">slug</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">AutoSlugField</FONT>
+    </TD></TR>
+  
+  
+    </TABLE>
+    >]
+
+  songs_models_SongInfo [label=<
+    <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
+    <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
+    <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
+    SongInfo
+    </B></FONT></TD></TR>
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto"><B>id</B></FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto"><B>CharField</B></FONT>
     </TD></TR>
   
   
@@ -482,31 +662,47 @@ digraph model_graph {
   
   
     <TR><TD ALIGN="LEFT" BORDER="0">
-    <FONT COLOR="#7B7B7B" FACE="Roboto">added_on</FONT>
+    <FONT FACE="Roboto">acousticness</FONT>
     </TD><TD ALIGN="LEFT">
-    <FONT COLOR="#7B7B7B" FACE="Roboto">DateTimeField</FONT>
+    <FONT FACE="Roboto">FloatField</FONT>
     </TD></TR>
   
   
   
     <TR><TD ALIGN="LEFT" BORDER="0">
-    <FONT FACE="Roboto">artist</FONT>
+    <FONT FACE="Roboto">danceability</FONT>
     </TD><TD ALIGN="LEFT">
-    <FONT FACE="Roboto">CharField</FONT>
+    <FONT FACE="Roboto">FloatField</FONT>
     </TD></TR>
   
   
   
     <TR><TD ALIGN="LEFT" BORDER="0">
-    <FONT COLOR="#7B7B7B" FACE="Roboto">audio_file</FONT>
+    <FONT FACE="Roboto">duration_ms</FONT>
     </TD><TD ALIGN="LEFT">
-    <FONT COLOR="#7B7B7B" FACE="Roboto">FileField</FONT>
+    <FONT FACE="Roboto">FloatField</FONT>
     </TD></TR>
   
   
   
     <TR><TD ALIGN="LEFT" BORDER="0">
-    <FONT COLOR="#7B7B7B" FACE="Roboto">audio_link</FONT>
+    <FONT FACE="Roboto">energy</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">explicit</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">BooleanField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">genius_id</FONT>
     </TD><TD ALIGN="LEFT">
     <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
     </TD></TR>
@@ -514,7 +710,71 @@ digraph model_graph {
   
   
     <TR><TD ALIGN="LEFT" BORDER="0">
-    <FONT FACE="Roboto">duration</FONT>
+    <FONT COLOR="#7B7B7B" FACE="Roboto">header_image_thumbnail_url</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">header_image_url</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">instrumentalness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">key</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">liveness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">loudness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">lyrics</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">TextField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">mode</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">name</FONT>
     </TD><TD ALIGN="LEFT">
     <FONT FACE="Roboto">CharField</FONT>
     </TD></TR>
@@ -522,17 +782,283 @@ digraph model_graph {
   
   
     <TR><TD ALIGN="LEFT" BORDER="0">
-    <FONT COLOR="#7B7B7B" FACE="Roboto">image</FONT>
+    <FONT FACE="Roboto">popularity</FONT>
     </TD><TD ALIGN="LEFT">
-    <FONT COLOR="#7B7B7B" FACE="Roboto">ImageField</FONT>
+    <FONT FACE="Roboto">IntegerField</FONT>
     </TD></TR>
   
   
   
     <TR><TD ALIGN="LEFT" BORDER="0">
-    <FONT FACE="Roboto">title</FONT>
+    <FONT COLOR="#7B7B7B" FACE="Roboto">release_date</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">DateField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">slug</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">AutoSlugField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">song_image_thumbnail_url</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">song_image_url</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">speechiness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">tempo</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">time_signature</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">valence</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+    </TABLE>
+    >]
+
+  songs_models_Song [label=<
+    <TABLE BGCOLOR="white" BORDER="1" CELLBORDER="0" CELLSPACING="0">
+    <TR><TD COLSPAN="2" CELLPADDING="5" ALIGN="CENTER" BGCOLOR="#1b563f">
+    <FONT FACE="Roboto" COLOR="white" POINT-SIZE="10"><B>
+    Song
+    </B></FONT></TD></TR>
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto"><B>id</B></FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto"><B>CharField</B></FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">acousticness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">danceability</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">duration_ms</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">energy</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">explicit</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">BooleanField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">genius_id</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">header_image_thumbnail_url</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">header_image_url</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">instrumentalness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">key</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">liveness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">loudness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">lyrics</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">TextField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">mode</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">name</FONT>
     </TD><TD ALIGN="LEFT">
     <FONT FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">popularity</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">release_date</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">DateField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">slug</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">AutoSlugField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">song_image_thumbnail_url</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">song_image_url</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT COLOR="#7B7B7B" FACE="Roboto">CharField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">speechiness</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">tempo</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">time_signature</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">IntegerField</FONT>
+    </TD></TR>
+  
+  
+  
+    <TR><TD ALIGN="LEFT" BORDER="0">
+    <FONT FACE="Roboto">valence</FONT>
+    </TD><TD ALIGN="LEFT">
+    <FONT FACE="Roboto">FloatField</FONT>
     </TD></TR>
   
   
@@ -651,8 +1177,17 @@ digraph model_graph {
   [label=" abstract\ninheritance"] [arrowhead=empty, arrowtail=none, dir=both];
 
 
-  songs_models_Song -> django_contrib_auth_models_User
-  [label=" added_by (songs)"] [arrowhead=none, arrowtail=dot, dir=both];
+  songs_models_Artist -> songs_models_Genre
+  [label=" genres (artist)"] [arrowhead=dot arrowtail=dot, dir=both];
+
+  songs_models_SongInfo -> django_contrib_auth_models_User
+  [label=" added_by (songinfos)"] [arrowhead=none, arrowtail=dot, dir=both];
+
+  songs_models_SongInfo -> songs_models_Artist
+  [label=" artists (songinfo)"] [arrowhead=dot arrowtail=dot, dir=both];
+
+  songs_models_Song -> songs_models_Artist
+  [label=" artists (song)"] [arrowhead=dot arrowtail=dot, dir=both];
 
 
   knox_models_AuthToken -> django_contrib_auth_models_User
