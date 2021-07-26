@@ -37,7 +37,7 @@ export class Discover extends Component {
       .then((data) => {
         console.log(data);
         this.setState({
-          info: data.slice(0,3),
+          info: data.slice(0,10),
           acousticness: this.state.acousticness,
           danceability: this.state.danceability,
           energy: this.state.energy,
