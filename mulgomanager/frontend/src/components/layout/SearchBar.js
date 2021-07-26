@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import axios from "axios";
 
 export class SearchBar extends Component {
   state = {
@@ -17,6 +18,18 @@ export class SearchBar extends Component {
     });
   };
 
+  // componentDidMount() {
+  //   fetch("http://127.0.0.1:8000/genres/")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       this.setState({ total: data.genres });
+  //       console.log(this.state.total);
+  //     })
+  //     .then((err) => {
+  //       console.log(err);
+  //     });
+  // }
+
   render() {
     return (
       <div
@@ -25,15 +38,14 @@ export class SearchBar extends Component {
           marginLeft: "350px",
         }}
       >
-      
         <img
           src="../../../static/images/mulgologo2.png"
           width="180"
           height="170"
           alt="Mulgo Logo"
           style={{
-            margin:"25px",
-            marginLeft:"100px"
+            margin: "25px",
+            marginLeft: "100px",
           }}
         />
         <h2> Welcome to Mulgo! </h2>
@@ -44,8 +56,10 @@ export class SearchBar extends Component {
             width: "200px",
           }}
         >
-          <option value="artist">Artist</option>
+          <option value="all">All</option>
           <option value="song_title">Song Title</option>
+          <option value="artist">Artist</option>
+          <option value="album">Album Name</option>
         </select>
         <form>
           <input

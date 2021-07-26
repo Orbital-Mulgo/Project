@@ -8,11 +8,13 @@ export class ResultPage extends Component {
     artist: "",
     image: "",
     lyrics: "",
+    info: [],
   };
 
   componentDidMount() {
     if (this.props.location.state) {
-      const { title, artist, image } = this.props.location.state;
+      const { title, artist, image, info } = this.props.location.state;
+      console.log(info)
 
       const config = {
         headers: {
@@ -38,11 +40,14 @@ export class ResultPage extends Component {
             artist: artist,
             image: image,
             lyrics: data.lyrics,
+            info: info,
           });
         })
         .catch((err) => {
           console.log(err.message);
         });
+
+
     }
   }
 
@@ -61,6 +66,24 @@ export class ResultPage extends Component {
           Song: {this.state.title}
           <br />
           Artist Name: {this.state.artist}
+          <br />
+          Acousticness: {this.state.info.acousticness}
+          <br />
+          Danceability: {this.state.info.danceability}
+          <br />
+          Energy: {this.state.info.energy}
+          <br />
+          Instrumentalness: {this.state.info.instrumentalness}
+          <br />
+          Liveness: {this.state.info.liveness}
+          <br />
+          Speechiness: {this.state.info.speechiness}
+          <br />
+          Valence: {this.state.info.valence}
+          <br />
+          Loudness: {this.state.info.loudness}
+          <br />
+          Tempo: {this.state.info.tempo}
           <br />
           <img
             src={this.state.image}
