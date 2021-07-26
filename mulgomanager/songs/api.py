@@ -61,7 +61,6 @@ def feature_range(metrics_type, deviation):
 
 class DiscoverView(APIView):
     def get(self, request, *args, **kwargs):
-        # try:
         acousticness = request.query_params["acousticness"] # 0 to 1
         danceability = request.query_params["danceability"] # 0 to 1
         energy = request.query_params["energy"] # 0 to 1
@@ -84,6 +83,33 @@ class DiscoverView(APIView):
         discovered_songs_count = discovered_songs.count()
         serializer = SongSerializer(discovered_songs, many=True)
         print(discovered_songs_count)
+        return Response(serializer.data)
+
+
+class RecommendView(APIView):
+    def get(self, request, *args, **kwargs):
+        acousticness = SongInfo.objects.aggregate(Avg(acousticness))
+        danceability = SongInfo.objects.aggregate(Avg(danceability))
+        energy = SongInfo.objects.aggregate(Avg(energy))
+        instrumentalness = SongInfo.objects.aggregate(Avg(instrumentalness))
+        liveness = SongInfo.objects.aggregate(Avg(liveness))
+        speechiness = SongInfo.objects.aggregate(Avg(speechiness))
+        valence = SongInfo.objects.aggregate(Avg(valence))
+        loudness = SongInfo.objects.aggregate(Avg(loudness))
+        tempo = SongInfo.objects.aggregate(Avg(tempo))
+        deviation = 20
+        recommended_songs = Song.objects.filter(acousticness__range=feature_range(acousticness, deviation),
+                                    danceability__range=feature_range(danceability, deviation),
+                                    energy__range=feature_range(energy, deviation),
+                                    instrumentalness__range=feature_range(instrumentalness, deviation),
+                                    liveness__range=feature_range(liveness, deviation),
+                                    speechiness__range=feature_range(speechiness, deviation),
+                                    valence__range=feature_range(valence, deviation),
+                                    loudness__range=feature_range(loudness, deviation),
+                                    tempo__range=feature_range(tempo, deviation)).all()
+        recommended_songs_count = recommended_songs.count()
+        serializer = SongSerializer(recommended_songs, many=True)
+        print(recommended_songs_count)
         return Response(serializer.data)
 
 
