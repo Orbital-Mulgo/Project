@@ -19,6 +19,7 @@ import PrivateRoute from "./common/PrivateRoute";
 import Library from "./library/Library";
 import ResultPage from "./ResultPage";
 import SearchPage from "./SearchPage";
+import Discover from "./Discover";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -51,6 +52,7 @@ class App extends Component {
                   <Route path="/library" component={Library} />
                   <Route path="/resultpage" component={ResultPage} />
                   <Route path="/searchpage" component={SearchPage} />
+                  <Route path="/discover" component={Discover} />
                 </Switch>
               </div>
             </Fragment>

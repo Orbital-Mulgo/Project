@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState } from "react";
+import React, { Component, Fragment} from "react";
 import axios from "axios";
 
 // In order to work with redux from any component, you need to use "connect"
@@ -102,50 +102,7 @@ export class SearchPage extends Component {
         search_term: query,
       };
 
-      if (value == "all") {
-        axios
-          .post("search/", body, config)
-          .then((res) => {
-            console.log(res.data);
-            this.setState({
-              info: res.data.hits,
-              total: this.state.total,
-            });
-            console.log(this.state.info);
-          })
-          .catch((err) => {
-            console.log(err.message);
-          });
-      } else if (value == "song_title") {
-        axios
-          .post("search/", body, config)
-          .then((res) => {
-            console.log(res.data);
-            this.setState({
-              info: res.data.hits,
-              total: this.state.total,
-            });
-            console.log(this.state.info);
-          })
-          .catch((err) => {
-            console.log(err.message);
-          });
-      } else if (value == "album") {
-        axios
-          .post("search/", body, config)
-          .then((res) => {
-            console.log(res.data);
-            this.setState({
-              info: res.data.hits,
-              total: this.state.total,
-            });
-            console.log(this.state.info);
-          })
-          .catch((err) => {
-            console.log(err.message);
-          });
-      } else if (value == "artist") {
-        axios
+      axios
           .post("search/", body, config)
           .then((res) => {
             console.log(res.data);
@@ -159,7 +116,7 @@ export class SearchPage extends Component {
             console.log(err.message);
           });
       }
-    }
+    
   }
 
   render() {

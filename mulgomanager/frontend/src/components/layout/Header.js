@@ -94,6 +94,9 @@ export class Header extends Component {
               </Link>
             </li>
             <li class="nav-item">
+            <Link to='/discover' class="nav-link" style={{ color: "white" }}>
+                Discover
+              </Link>
             </li>
           </ul>
           {isAuthenticated ? authLinks : guestLinks}
