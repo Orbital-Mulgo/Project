@@ -10,36 +10,49 @@ import { addSong } from "../actions/songs";
 class SongDetail extends Component {
   constructor(props) {
     super(props);
-  }
-  state = {
-    info: this.props.song,
-    title: this.props.song.result.title,
-    artist: this.props.song.result.primary_artist.name,
-    image: this.props.song.result.header_image_url,
-    libraryState: "Add to library",
+    this.state = {
+      info: this.props.song,
+      libraryState: "Add to library",
+      artist: "",
+      loading: false,
+    };
   };
 
-  handleClick = () => {
-    console.log(this.props)
-    const { info, title, artist, image, libraryState } = this.state;
-    fetch("http://127.0.0.1:8000/songs/?name=" + title)
+  FetchArtist() {
+    fetch("http://127.0.0.1:8000/artists/?search=" + this.state.info.artists[0])
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          this.props.addSong(data);
-        });
+          console.log(data[0].name);
+          this.setState({
+            info: this.state.info,
+            libraryState: this.state.libraryState,
+            artist: data[0].name,
+            loading: true,
+          });
+        })
+  }
+
+  componentDidMount() {
+    this.FetchArtist()
+  }
+
+  handleClick = () => {
+    console.log(this.state.artist)
+    this.props.addSong(this.state.info)
     
     this.setState({
       info: this.state.info,
-      title: this.state.title,
-      artist: this.state.artist,
-      image: this.state.image,
       libraryState: "Added to library",
+      artist: this.state.artist,
+      loading: this.state.loading,
     });
   };
 
   render() {
+    const {info, libraryState,artist,loading} = this.state;
     return (
+      <Fragment>
+      {loading && (
       <tr>
         <td>{this.props.index + 1}</td>
         <td>{this.state.artist}</td>
@@ -47,19 +60,20 @@ class SongDetail extends Component {
           to={{
             pathname: "/resultpage",
             state: {
-              title: this.state.title,
+              title: this.state.info.name,
               artist: this.state.artist,
-              image: this.state.image,
+              image: this.state.info.header_image_url,
+              info: this.state.info,
             },
           }}
           style={{ color: "black" }}
           replace
         >
-          <td>{this.state.title}</td>
+          <td>{this.state.info.name}</td>
         </Link>
         <td>
           <img
-            src={this.state.image}
+            src = {this.state.info.header_image_url}
             alt="album image"
             width="100"
             height="100"
@@ -75,6 +89,8 @@ class SongDetail extends Component {
           </button>
         </td>
       </tr>
+      )}
+      </Fragment>
     );
   }
 }
@@ -89,35 +105,16 @@ export class SearchPage extends Component {
     if (this.props.location.state) {
       console.log(this.props.location.state);
       const { query, value } = this.props.location.state;
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        param: {
-          search_term: query,
-        },
-      };
-
-      const body = {
-        search_term: query,
-      };
-
-      axios
-          .post("search/", body, config)
-          .then((res) => {
-            console.log(res.data);
-            this.setState({
-              info: res.data.hits,
-              total: this.state.total,
-            });
-            console.log(this.state.info);
-          })
-          .catch((err) => {
-            console.log(err.message);
+      fetch("http://127.0.0.1:8000/songs/?search=" + query)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.setState({
+            info: data,
           });
+        })
       }
-    
-  }
+    }
 
   render() {
     return (

@@ -74,6 +74,7 @@ export class SongDetail extends Component {
                       title:this.state.info.result.title,
                       artist: this.state.info.result.primary_artist.name,
                       image: this.state.info.result.header_image_url,
+                      info: this.props.song,
                     },
                   }}
                   style={{ color: "black" }}
@@ -141,6 +142,7 @@ export class Library extends Component {
     return (
       <Fragment>
         <h2 style={{ textAlign: "center", padding: "20px" }}>Library</h2>
+        <h5 style={{ textAlign: "center" }}>You have currently {this.props.songs.length} songs in your library</h5>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -161,43 +163,6 @@ export class Library extends Component {
               />
             ))}
 
-             {/* <tr key={song.id}>
-               {() => this.FetchInfo.call(this,song)} 
-                <td>{index + 1}</td>
-                <td>{}</td>
-                <td>{}</td>
-                <td>
-                  <img
-                    src={song.image}
-                    alt="album image"
-                    width="100"
-                    height="100"
-                  />
-                </td>
-                <Link
-                  to={{
-                    pathname: "/resultpage",
-                    state: {
-                      title: song.title,
-                      artist: song.artist,
-                      image: song.image,
-                    },
-                  }}
-                  style={{ color: "black" }}
-                >
-                  <td>Click Here</td>
-                </Link>
-                <td>
-                  <button
-                    onClick={this.props.deleteSong.bind(this, song.id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    {" "}
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}  */}
           </tbody>
         </table>
       </Fragment>
