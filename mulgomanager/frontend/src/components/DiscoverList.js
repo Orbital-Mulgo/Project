@@ -60,6 +60,7 @@ class SongDetail extends Component {
                 title: this.state.info.name,
                 artist: this.state.artist,
                 image: this.state.info.header_image_url,
+                info: this.state.info,
               },
             }}
             style={{ color: "black" }}
