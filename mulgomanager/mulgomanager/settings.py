@@ -53,7 +53,9 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 MIDDLEWARE = [
@@ -102,6 +104,18 @@ DATABASES = {
         'OPTIONS': {"charset": "utf8mb4"},
 
     }
+    
+    # PythonAnywhere Deployment
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'mulgo$mulgodatabase',
+    #     'USER': 'mulgo',
+    #     'PASSWORD': 'mulgodatabase123',
+    #     # 'HOST': 'localhost',
+    #     'HOST': 'mulgo.mysql.pythonanywhere-services.com',
+    #     'OPTIONS': {"charset": "utf8mb4"},
+    # }
+    
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
